@@ -1,304 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Nabila Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nabila Ulfa | Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #0d0d0d;
+            color: white;
+            scroll-behavior: smooth;
+        }
 
-<style>
-    :root {
-        --primary: #00d2ff;
-        --secondary: #3a7bd5;
-        --dark-bg: #0b0f1a;
-        --light-bg: #f5f5f5;
-        --card-bg: rgba(255,255,255,0.08);
-        --glass-bg: rgba(0, 15, 30, 0.45);
-    }
+        /* NAVBAR */
+        nav {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-    }
+        nav a {
+            color: white;
+            margin: 0 18px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
 
-    html {
-        scroll-behavior: smooth;
-        scroll-padding-top: 110px; /* BIAR HEADER GA NUTUPI */
-    }
+        nav a:hover { color: #0055ff; }
 
-    body {
-        background: var(--light-bg);
-        color: #222;
-        transition: 0.4s;
-    }
+        /* CONTAINER */
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 100px 20px 60px;
+        }
 
-    body.dark {
-        background: var(--dark-bg);
-        color: #e6e6e6;
-    }
+        .section-title {
+            text-align: center;
+            font-size: 2.3rem;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
 
-    /* ===== NAVBAR GLASS EFFECT ===== */
-    nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        padding: 18px 40px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        backdrop-filter: blur(15px);
-        background: rgba(0, 10, 20, 0.55);
-        border-bottom: 1px solid #00d2ff3f;
-        box-shadow: 0 0 20px #00d2ff3f;
-        z-index: 1000;
-    }
+        /* ABOUT */
+        .about-box {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
 
-    nav h1 {
-        font-size: 22px;
-        color: var(--primary);
-        font-weight: 700;
-        text-shadow: 0 0 10px var(--primary);
-    }
+        .profile-img {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #0055ff;
+            box-shadow: 0 0 25px #0055ff80;
+        }
 
-    nav ul {
-        display: flex;
-        gap: 22px;
-        list-style: none;
-        padding-right: 15px;
-    }
+        .about-text {
+            flex: 1;
+        }
 
-    nav ul li a {
-        color: #dff9ff;
-        font-weight: 500;
-        text-decoration: none;
-        font-size: 15px;
-        white-space: nowrap;
-        transition: 0.3s;
-    }
+        /* PROJECTS */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
 
-    nav ul li a:hover {
-        color: var(--primary);
-        text-shadow: 0 0 8px var(--primary);
-    }
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
 
-    /* ===== HEADER ===== */
-    header {
-        text-align: center;
-        padding: 150px 20px 120px;
-        background: linear-gradient(135deg,#001,#002,#003);
-        color: white;
-        animation: bgMove 8s infinite alternate;
-    }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 25px #0055ff80;
+            border-color: #0055ff;
+        }
 
-    header img {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        object-fit: cover;
-        box-shadow: 0 0 20px var(--primary);
-        margin-bottom: 20px;
-    }
+        .project-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
 
-    @keyframes bgMove {
-        0% { background-position: left; }
-        100% { background-position: right; }
-    }
+        .project-content {
+            padding: 20px;
+        }
 
-    /* ===== SECTIONS ===== */
-    section {
-        padding: 120px 20px;
-        max-width: 1150px;
-        margin: auto;
-    }
+        .project-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 16px;
+            background: #0055ff;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: 0.3s;
+        }
 
-    h2 {
-        text-align: center;
-        font-size: 32px;
-        margin-bottom: 40px;
-        color: var(--secondary);
-    }
+        .project-btn:hover {
+            background: #003bbd;
+        }
 
-    /* ===== PROJECT CARD ===== */
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-        gap: 25px;
-    }
+        /* EXPERIENCE */
+        .exp-list {
+            list-style: none;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            padding-left: 10px;
+        }
 
-    .card {
-        background: var(--glass-bg);
-        border-radius: 15px;
-        padding: 25px;
-        backdrop-filter: blur(10px);
-        border: 1px solid #00d2ff40;
-        box-shadow: 0 0 25px #00d2ff25;
-        transition: 0.3s;
-        cursor: pointer;
-    }
+        /* CONTACT */
+        .contact-box {
+            text-align: center;
+            margin-top: 20px;
+        }
 
-    .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 0 25px var(--primary);
-    }
+        .contact-box a {
+            color: #0055ff;
+            font-size: 1.1rem;
+            text-decoration: none;
+        }
 
-    .card h3 {
-        margin-bottom: 10px;
-        color: var(--primary);
-    }
-
-    .btn {
-        display: inline-block;
-        background: linear-gradient(135deg,#3a7bd5,#00d2ff);
-        padding: 10px 18px;
-        color: white;
-        text-decoration: none;
-        border-radius: 8px;
-        font-weight: 600;
-        margin-top: 15px;
-        transition: 0.3s;
-    }
-
-    .btn:hover {
-        transform: scale(1.08);
-        opacity: 0.9;
-    }
-
-    /* ===== EXPERIENCE LIST ===== */
-    .exp-box {
-        background: var(--glass-bg);
-        border-left: 4px solid var(--primary);
-        padding: 20px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        backdrop-filter: blur(15px);
-    }
-
-    .exp-box h4 {
-        color: var(--primary);
-        margin-bottom: 5px;
-    }
-
-    /* ===== CONTACT ===== */
-    #contact p {
-        margin: 10px 0;
-        font-size: 18px;
-    }
-
-    /* ===== DARK MODE BUTTON ===== */
-    #darkToggle {
-        position: fixed;
-        right: 20px;
-        bottom: 20px;
-        background: #000;
-        color: white;
-        padding: 12px 20px;
-        border-radius: 10px;
-        cursor: pointer;
-    }
-</style>
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .about-box { text-align: center; justify-content: center; }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- ===== NAVBAR ===== -->
+<!-- NAVBAR -->
 <nav>
-    <h1>Nabila</h1>
-
-    <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
 </nav>
 
-<!-- ===== HEADER ===== -->
-<header>
-    <img src="https://i.ibb.co/8jdJq0j/profile.jpg" alt="foto-nabila">
-    <h1>Nabila Ulfa</h1>
-    <p>Web Developer | Informatics Student | Tech Enthusiast</p>
-</header>
-
-<!-- ===== ABOUT ===== -->
+<!-- ABOUT -->
 <section id="about">
-    <h2>About Me</h2>
-    <p style="text-align:center; max-width:800px; margin:auto; line-height:1.9;">
-        Saya adalah mahasiswa Informatika yang fokus di web development,
-        Laravel, UI/UX, dan sistem berbasis reservasi.  
-        Saya suka membangun project real, mempelajari teknologi baru,
-        dan membuat tampilan web yang modern, smooth, dan interaktif.
-    </p>
+    <div class="container">
+        <h2 class="section-title">About Me</h2>
+
+        <div class="about-box">
+            <img src="assets/img/profile.jpg" class="profile-img">
+
+            <div class="about-text">
+                <h3>Nabila Ulfa — Informatics Student</h3>
+                <p>
+                    Saya seorang mahasiswi Informatika yang fokus pada web development, UI/UX,
+                    dan sistem informasi. Beberapa project saya meliputi sistem reservasi Aretha Beauty,
+                    aplikasi kasir berbasis Laravel, dan sistem rekomendasi skincare berbasis CBR.
+                </p>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!-- ===== PROJECTS ===== -->
+<!-- PROJECTS -->
 <section id="projects">
-    <h2>Projects</h2>
+    <div class="container">
+        <h2 class="section-title">My Projects</h2>
 
-    <div class="grid">
+        <div class="project-grid">
 
-        <div class="card">
-            <h3>Aretha Beauty</h3>
-            <p>Sistem reservasi lengkap (membership, promo, dashboard Laravel).</p>
-            <a href="#" class="btn">Lihat Project</a>
+            <div class="project-card">
+                <img src="assets/img/aretha-beauty.jpg" class="project-img">
+                <div class="project-content">
+                    <h3>Aretha Beauty — Reservation System</h3>
+                    <p>Sistem reservasi salon lengkap dengan booking, membership, promo, dan dashboard admin.</p>
+                    <a class="project-btn" href="#contact">Detail Project</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="assets/img/kasir-pintar.jpg" class="project-img">
+                <div class="project-content">
+                    <h3>Kasir Pintar — Laravel</h3>
+                    <p>Aplikasi kasir Laravel dengan CRUD produk, transaksi, dan laporan.</p>
+                    <a class="project-btn" href="#contact">Detail Project</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="assets/img/cbr-skincare.jpg" class="project-img">
+                <div class="project-content">
+                    <h3>CBR Skincare — Streamlit</h3>
+                    <p>Sistem rekomendasi skincare menggunakan Case-Based Reasoning.</p>
+                    <a class="project-btn" href="#contact">Detail Project</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="assets/img/profile.jpg" class="project-img">
+                <div class="project-content">
+                    <h3>Personal Portfolio</h3>
+                    <p>Website portfolio modern 2025 yang kamu gunakan saat ini.</p>
+                    <a class="project-btn" href="#contact">Detail Project</a>
+                </div>
+            </div>
+
         </div>
-
-        <div class="card">
-            <h3>Kasir Pintar</h3>
-            <p>Aplikasi kasir CRUD & laporan transaksi Laravel.</p>
-            <a href="#" class="btn">Lihat Project</a>
-        </div>
-
-        <div class="card">
-            <h3>SPK Skincare CBR</h3>
-            <p>Sistem rekomendasi skincare menggunakan metode Case-Based Reasoning.</p>
-            <a href="#" class="btn">Lihat Project</a>
-        </div>
-
     </div>
 </section>
 
-<!-- ===== EXPERIENCE ===== -->
+<!-- EXPERIENCE -->
 <section id="experience">
-    <h2>Experience</h2>
+    <div class="container">
+        <h2 class="section-title">Experience</h2>
 
-    <div class="exp-box">
-        <h4>Fullstack Web Developer</h4>
-        <p>Membangun sistem reservasi, kasir, dan dashboard Laravel dengan UI modern.</p>
+        <ul class="exp-list">
+            <li>• Admin dan pengelola data laporan Aretha Beauty</li>
+            <li>• Pengembang sistem reservasi salon (Laravel)</li>
+            <li>• Pengembang aplikasi kasir (Laravel)</li>
+            <li>• Perancang sistem rekomendasi skincare (CBR)</li>
+            <li>• UI/UX designer untuk sistem Aretha Beauty</li>
+        </ul>
     </div>
-
-    <div class="exp-box">
-        <h4>UI/UX Designer</h4>
-        <p>Mendesain tampilan interaktif berbasis figma & responsive layout.</p>
-    </div>
-
-    <div class="exp-box">
-        <h4>Admin & Data Management</h4>
-        <p>Mengelola data, laporan, dan dokumentasi sistem.</p>
-    </div>
-
 </section>
 
-<!-- ===== CONTACT ===== -->
+<!-- CONTACT -->
 <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <b>naabiilaauulfaa@gmail.com</b></p>
-    <p>Instagram: <b>@nabilaaulfaaa</b></p>
+    <div class="container">
+        <h2 class="section-title">Contact Me</h2>
+
+        <div class="contact-box">
+            <p>Jika ingin bekerjasama atau menanyakan project:</p>
+            <a href="mailto:nabilaulfa@gmail.com">nabilaulfa@gmail.com</a>
+        </div>
+    </div>
 </section>
-
-<button id="darkToggle">Dark Mode</button>
-
-<script>
-    const toggle = document.getElementById("darkToggle");
-    toggle.addEventListener("click", () => {
-        document.body.classList.toggle("dark");
-        toggle.innerText = document.body.classList.contains("dark")
-            ? "Light Mode"
-            : "Dark Mode";
-    });
-</script>
 
 </body>
 </html>
