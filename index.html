@@ -3,159 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FissionX - Portfolio</title>
+    <title>FissionX Portfolio 2025</title>
+
     <style>
         body {
             margin: 0;
-            background: #020202;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background: #03040a;
             color: white;
-            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        header {
+        /* ===== NAVBAR ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 10, 20, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #00eaff60;
+            box-shadow: 0 0 20px #00dbff4f;
+            z-index: 1000;
+        }
+
+        nav h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #00eaff;
+            text-shadow: 0 0 10px #00eaff;
+            margin: 0;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            margin: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #dff9ff;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #00eaff;
+            text-shadow: 0 0 8px #00eaff;
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            padding: 100px 20px;
             text-align: center;
-            padding: 50px 20px;
-            background: linear-gradient(135deg, #000, #0a0f26);
-            border-bottom: 1px solid #0ff;
-            box-shadow: 0 0 25px #00d0ff70;
         }
 
-        header h1 {
+        /* ===== HERO ===== */
+        .hero {
+            padding-top: 150px;
+            padding-bottom: 120px;
+        }
+
+        .hero h2 {
             font-size: 40px;
-            letter-spacing: 3px;
-            text-shadow: 0 0 15px #00d0ff;
+            text-shadow: 0 0 15px #00eaff;
         }
 
-        .section {
-            padding: 60px 20px;
-            text-align: center;
+        .hero p {
+            font-size: 18px;
+            opacity: 0.8;
+            margin-top: -10px;
         }
 
-        .section h2 {
-            font-size: 28px;
-            margin-bottom: 30px;
-            text-shadow: 0 0 10px #00cfff;
+        /* ===== TITLES ===== */
+        .title {
+            font-size: 32px;
+            margin-bottom: 40px;
+            text-shadow: 0 0 10px #00eaff;
         }
 
-        /* --- CARDS --- */
-        .card-container {
+        /* ===== CARD GRID ===== */
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
             padding: 20px;
         }
 
+        /* ===== MODERN CARD 2025 ===== */
         .card {
-            padding: 20px;
-            border-radius: 12px;
-            background: rgba(0, 20, 40, 0.65);
-            border: 1px solid #00e1ff40;
-            box-shadow: 0 0 15px #0099ff40;
-            transform: translateY(0);
-            transition: 0.35s;
-            backdrop-filter: blur(8px);
+            background: rgba(0, 25, 45, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid #00eaff40;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 0 15px #00eaff30;
+            transition: 0.35s ease;
         }
 
         .card:hover {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 0 20px #00eaff;
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 0 25px #00eaff;
         }
 
-        /* --- DOCUMENTATION CARD FIX --- */
-        .doc-card p {
-            text-align: left;
-            line-height: 1.6;
-            padding: 0 5px;
+        .card h3 {
+            margin: 0 0 15px 0;
+            font-size: 22px;
+            color: #00eaff;
         }
 
-        /* --- FOOTER --- */
-        footer {
-            padding: 30px;
-            text-align: center;
-            background: #01060e;
-            border-top: 1px solid #00d0ff60;
+        .card p {
+            opacity: 0.85;
+            font-size: 15px;
         }
 
-        /* BUTTON */
-        .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            border-radius: 8px;
-            margin-top: 20px;
-            font-weight: bold;
+        /* ===== CONTACT ===== */
+        .contact p {
+            font-size: 18px;
+        }
+
+        .email {
+            color: #00eaff;
             text-decoration: none;
-            color: black;
-            background: #00eaff;
-            box-shadow: 0 0 12px #00eaff;
-            transition: 0.3s;
+            font-weight: bold;
         }
 
-        .btn:hover {
-            background: #0ff;
-            box-shadow: 0 0 20px #0ff;
+        /* ===== FOOTER ===== */
+        footer {
+            margin-top: 50px;
+            padding: 20px;
+            text-align: center;
+            background: #02050d;
+            border-top: 1px solid #00eaff60;
         }
 
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 28px;
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 700px) {
+            nav ul {
+                gap: 15px;
             }
-            .section h2 {
-                font-size: 22px;
+
+            .hero h2 {
+                font-size: 30px;
             }
         }
     </style>
-</head>
 
+</head>
 <body>
 
-    <header>
-        <h1>FissionX Portfolio</h1>
-        <p>Cyber Tech | UI Designer | Web Dev</p>
-    </header>
+    <!-- NAVBAR -->
+    <nav>
+        <h1>FissionX</h1>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+        <h2>Welcome to My Cyber Portfolio</h2>
+        <p>Web Developer • UI/UX Designer • Cyber Aesthetic Creator</p>
+    </section>
 
     <!-- ABOUT -->
-    <section class="section">
-        <h2>About Me</h2>
-        <p>Hello! I'm FissionX — a student who loves creating cyber-themed UIs, modern websites, and futuristic designs.</p>
+    <section id="about">
+        <h2 class="title">About Me</h2>
+        <p style="max-width: 700px; margin: auto; line-height: 1.8;">
+            Hello! I'm a designer who loves futuristic cyber styles, glowing UIs,
+            and modern websites with clean interactions.  
+            I create interfaces with neon hologram energy — inspired by sci-fi & 2025 design trends.
+        </p>
     </section>
 
-    <!-- SKILLS -->
-    <section class="section">
-        <h2>Skills</h2>
-        <div class="card-container">
-            <div class="card">Web Development</div>
-            <div class="card">UI/UX Design</div>
-            <div class="card">Cyber Theme Styling</div>
-            <div class="card">Creative Editing</div>
-        </div>
-    </section>
+    <!-- PROJECTS -->
+    <section id="projects">
+        <h2 class="title">My Projects</h2>
 
-    <!-- DOCUMENTATION -->
-    <section class="section">
-        <h2>Project Documentation</h2>
-        <div class="card-container">
+        <div class="grid">
 
-            <div class="card doc-card">
-                <h3>Project 1</h3>
-                <p>• Full cyber UI build<br>• Live demo included<br>• Modern layout</p>
+            <div class="card">
+                <h3>Cyber UI Dashboard</h3>
+                <p>Neon-glass dashboard with glowing elements and smooth animations.</p>
             </div>
 
-            <div class="card doc-card">
-                <h3>Project 2</h3>
-                <p>• 3D button animation<br>• Gradient glow<br>• Responsive UI</p>
+            <div class="card">
+                <h3>Portfolio v3 Hologram</h3>
+                <p>Ultra-modern portfolio with particle effects & hologram buttons.</p>
             </div>
 
-            <div class="card doc-card">
-                <h3>Project 3</h3>
-                <p>• Smooth box hover<br>• Dark theme<br>• Neon border</p>
+            <div class="card">
+                <h3>3D Hero Web</h3>
+                <p>Landing page with interactive 3D tilt motion & holo gradient.</p>
             </div>
 
         </div>
     </section>
 
+    <!-- EXPERIENCE -->
+    <section id="experience">
+        <h2 class="title">Experience</h2>
+
+        <div class="grid">
+            <div class="card">
+                <h3>UI Designer</h3>
+                <p>Created modern futuristic interface concepts with glowing themes.</p>
+            </div>
+
+            <div class="card">
+                <h3>Frontend Developer</h3>
+                <p>Built responsive websites with smooth animations & dark mode UI.</p>
+            </div>
+
+            <div class="card">
+                <h3>Creative Developer</h3>
+                <p>Designed & coded interactive elements for modern portfolios.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+        <h2 class="title">Contact Me</h2>
+        <p>Feel free to reach out anytime:</p>
+        <p><a class="email" href="mailto:fissionxdev@gmail.com">fissionxdev@gmail.com</a></p>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
-        <p>© 2025 FissionX. All Rights Reserved.</p>
+        © 2025 FissionX. All rights reserved.
     </footer>
 
 </body>
