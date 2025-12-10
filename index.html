@@ -1,247 +1,304 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FissionX Portfolio 2025</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nabila Portfolio</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background: #03040a;
-            color: white;
-            scroll-behavior: smooth;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-        /* ===== NAVBAR ===== */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 10, 20, 0.7);
-            backdrop-filter: blur(10px);
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #00eaff60;
-            box-shadow: 0 0 20px #00dbff4f;
-            z-index: 1000;
-        }
+<style>
+    :root {
+        --primary: #00d2ff;
+        --secondary: #3a7bd5;
+        --dark-bg: #0b0f1a;
+        --light-bg: #f5f5f5;
+        --card-bg: rgba(255,255,255,0.08);
+        --glass-bg: rgba(0, 15, 30, 0.45);
+    }
 
-        nav h1 {
-            font-size: 22px;
-            font-weight: 700;
-            color: #00eaff;
-            text-shadow: 0 0 10px #00eaff;
-            margin: 0;
-        }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+    }
 
-        nav ul {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-            margin: 0;
-        }
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 110px; /* BIAR HEADER GA NUTUPI */
+    }
 
-        nav ul li a {
-            text-decoration: none;
-            color: #dff9ff;
-            font-weight: 500;
-            transition: 0.3s;
-        }
+    body {
+        background: var(--light-bg);
+        color: #222;
+        transition: 0.4s;
+    }
 
-        nav ul li a:hover {
-            color: #00eaff;
-            text-shadow: 0 0 8px #00eaff;
-        }
+    body.dark {
+        background: var(--dark-bg);
+        color: #e6e6e6;
+    }
 
-        /* ===== SECTIONS ===== */
-        section {
-            padding: 100px 20px;
-            text-align: center;
-        }
+    /* ===== NAVBAR GLASS EFFECT ===== */
+    nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 18px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        backdrop-filter: blur(15px);
+        background: rgba(0, 10, 20, 0.55);
+        border-bottom: 1px solid #00d2ff3f;
+        box-shadow: 0 0 20px #00d2ff3f;
+        z-index: 1000;
+    }
 
-        /* ===== HERO ===== */
-        .hero {
-            padding-top: 150px;
-            padding-bottom: 120px;
-        }
+    nav h1 {
+        font-size: 22px;
+        color: var(--primary);
+        font-weight: 700;
+        text-shadow: 0 0 10px var(--primary);
+    }
 
-        .hero h2 {
-            font-size: 40px;
-            text-shadow: 0 0 15px #00eaff;
-        }
+    nav ul {
+        display: flex;
+        gap: 22px;
+        list-style: none;
+        padding-right: 15px;
+    }
 
-        .hero p {
-            font-size: 18px;
-            opacity: 0.8;
-            margin-top: -10px;
-        }
+    nav ul li a {
+        color: #dff9ff;
+        font-weight: 500;
+        text-decoration: none;
+        font-size: 15px;
+        white-space: nowrap;
+        transition: 0.3s;
+    }
 
-        /* ===== TITLES ===== */
-        .title {
-            font-size: 32px;
-            margin-bottom: 40px;
-            text-shadow: 0 0 10px #00eaff;
-        }
+    nav ul li a:hover {
+        color: var(--primary);
+        text-shadow: 0 0 8px var(--primary);
+    }
 
-        /* ===== CARD GRID ===== */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            padding: 20px;
-        }
+    /* ===== HEADER ===== */
+    header {
+        text-align: center;
+        padding: 150px 20px 120px;
+        background: linear-gradient(135deg,#001,#002,#003);
+        color: white;
+        animation: bgMove 8s infinite alternate;
+    }
 
-        /* ===== MODERN CARD 2025 ===== */
-        .card {
-            background: rgba(0, 25, 45, 0.4);
-            backdrop-filter: blur(10px);
-            border: 1px solid #00eaff40;
-            padding: 25px;
-            border-radius: 14px;
-            box-shadow: 0 0 15px #00eaff30;
-            transition: 0.35s ease;
-        }
+    header img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 0 20px var(--primary);
+        margin-bottom: 20px;
+    }
 
-        .card:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 0 25px #00eaff;
-        }
+    @keyframes bgMove {
+        0% { background-position: left; }
+        100% { background-position: right; }
+    }
 
-        .card h3 {
-            margin: 0 0 15px 0;
-            font-size: 22px;
-            color: #00eaff;
-        }
+    /* ===== SECTIONS ===== */
+    section {
+        padding: 120px 20px;
+        max-width: 1150px;
+        margin: auto;
+    }
 
-        .card p {
-            opacity: 0.85;
-            font-size: 15px;
-        }
+    h2 {
+        text-align: center;
+        font-size: 32px;
+        margin-bottom: 40px;
+        color: var(--secondary);
+    }
 
-        /* ===== CONTACT ===== */
-        .contact p {
-            font-size: 18px;
-        }
+    /* ===== PROJECT CARD ===== */
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+        gap: 25px;
+    }
 
-        .email {
-            color: #00eaff;
-            text-decoration: none;
-            font-weight: bold;
-        }
+    .card {
+        background: var(--glass-bg);
+        border-radius: 15px;
+        padding: 25px;
+        backdrop-filter: blur(10px);
+        border: 1px solid #00d2ff40;
+        box-shadow: 0 0 25px #00d2ff25;
+        transition: 0.3s;
+        cursor: pointer;
+    }
 
-        /* ===== FOOTER ===== */
-        footer {
-            margin-top: 50px;
-            padding: 20px;
-            text-align: center;
-            background: #02050d;
-            border-top: 1px solid #00eaff60;
-        }
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 25px var(--primary);
+    }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 700px) {
-            nav ul {
-                gap: 15px;
-            }
+    .card h3 {
+        margin-bottom: 10px;
+        color: var(--primary);
+    }
 
-            .hero h2 {
-                font-size: 30px;
-            }
-        }
-    </style>
+    .btn {
+        display: inline-block;
+        background: linear-gradient(135deg,#3a7bd5,#00d2ff);
+        padding: 10px 18px;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        margin-top: 15px;
+        transition: 0.3s;
+    }
 
+    .btn:hover {
+        transform: scale(1.08);
+        opacity: 0.9;
+    }
+
+    /* ===== EXPERIENCE LIST ===== */
+    .exp-box {
+        background: var(--glass-bg);
+        border-left: 4px solid var(--primary);
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        backdrop-filter: blur(15px);
+    }
+
+    .exp-box h4 {
+        color: var(--primary);
+        margin-bottom: 5px;
+    }
+
+    /* ===== CONTACT ===== */
+    #contact p {
+        margin: 10px 0;
+        font-size: 18px;
+    }
+
+    /* ===== DARK MODE BUTTON ===== */
+    #darkToggle {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        background: #000;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+</style>
 </head>
+
 <body>
 
-    <!-- NAVBAR -->
-    <nav>
-        <h1>FissionX</h1>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+<!-- ===== NAVBAR ===== -->
+<nav>
+    <h1>Nabila</h1>
 
-    <!-- HERO -->
-    <section id="home" class="hero">
-        <h2>Welcome to My Cyber Portfolio</h2>
-        <p>Web Developer • UI/UX Designer • Cyber Aesthetic Creator</p>
-    </section>
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
 
-    <!-- ABOUT -->
-    <section id="about">
-        <h2 class="title">About Me</h2>
-        <p style="max-width: 700px; margin: auto; line-height: 1.8;">
-            Hello! I'm a designer who loves futuristic cyber styles, glowing UIs,
-            and modern websites with clean interactions.  
-            I create interfaces with neon hologram energy — inspired by sci-fi & 2025 design trends.
-        </p>
-    </section>
+<!-- ===== HEADER ===== -->
+<header>
+    <img src="https://i.ibb.co/8jdJq0j/profile.jpg" alt="foto-nabila">
+    <h1>Nabila Ulfa</h1>
+    <p>Web Developer | Informatics Student | Tech Enthusiast</p>
+</header>
 
-    <!-- PROJECTS -->
-    <section id="projects">
-        <h2 class="title">My Projects</h2>
+<!-- ===== ABOUT ===== -->
+<section id="about">
+    <h2>About Me</h2>
+    <p style="text-align:center; max-width:800px; margin:auto; line-height:1.9;">
+        Saya adalah mahasiswa Informatika yang fokus di web development,
+        Laravel, UI/UX, dan sistem berbasis reservasi.  
+        Saya suka membangun project real, mempelajari teknologi baru,
+        dan membuat tampilan web yang modern, smooth, dan interaktif.
+    </p>
+</section>
 
-        <div class="grid">
+<!-- ===== PROJECTS ===== -->
+<section id="projects">
+    <h2>Projects</h2>
 
-            <div class="card">
-                <h3>Cyber UI Dashboard</h3>
-                <p>Neon-glass dashboard with glowing elements and smooth animations.</p>
-            </div>
+    <div class="grid">
 
-            <div class="card">
-                <h3>Portfolio v3 Hologram</h3>
-                <p>Ultra-modern portfolio with particle effects & hologram buttons.</p>
-            </div>
-
-            <div class="card">
-                <h3>3D Hero Web</h3>
-                <p>Landing page with interactive 3D tilt motion & holo gradient.</p>
-            </div>
-
+        <div class="card">
+            <h3>Aretha Beauty</h3>
+            <p>Sistem reservasi lengkap (membership, promo, dashboard Laravel).</p>
+            <a href="#" class="btn">Lihat Project</a>
         </div>
-    </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience">
-        <h2 class="title">Experience</h2>
-
-        <div class="grid">
-            <div class="card">
-                <h3>UI Designer</h3>
-                <p>Created modern futuristic interface concepts with glowing themes.</p>
-            </div>
-
-            <div class="card">
-                <h3>Frontend Developer</h3>
-                <p>Built responsive websites with smooth animations & dark mode UI.</p>
-            </div>
-
-            <div class="card">
-                <h3>Creative Developer</h3>
-                <p>Designed & coded interactive elements for modern portfolios.</p>
-            </div>
+        <div class="card">
+            <h3>Kasir Pintar</h3>
+            <p>Aplikasi kasir CRUD & laporan transaksi Laravel.</p>
+            <a href="#" class="btn">Lihat Project</a>
         </div>
-    </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="contact">
-        <h2 class="title">Contact Me</h2>
-        <p>Feel free to reach out anytime:</p>
-        <p><a class="email" href="mailto:fissionxdev@gmail.com">fissionxdev@gmail.com</a></p>
-    </section>
+        <div class="card">
+            <h3>SPK Skincare CBR</h3>
+            <p>Sistem rekomendasi skincare menggunakan metode Case-Based Reasoning.</p>
+            <a href="#" class="btn">Lihat Project</a>
+        </div>
 
-    <!-- FOOTER -->
-    <footer>
-        © 2025 FissionX. All rights reserved.
-    </footer>
+    </div>
+</section>
+
+<!-- ===== EXPERIENCE ===== -->
+<section id="experience">
+    <h2>Experience</h2>
+
+    <div class="exp-box">
+        <h4>Fullstack Web Developer</h4>
+        <p>Membangun sistem reservasi, kasir, dan dashboard Laravel dengan UI modern.</p>
+    </div>
+
+    <div class="exp-box">
+        <h4>UI/UX Designer</h4>
+        <p>Mendesain tampilan interaktif berbasis figma & responsive layout.</p>
+    </div>
+
+    <div class="exp-box">
+        <h4>Admin & Data Management</h4>
+        <p>Mengelola data, laporan, dan dokumentasi sistem.</p>
+    </div>
+
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <b>naabiilaauulfaa@gmail.com</b></p>
+    <p>Instagram: <b>@nabilaaulfaaa</b></p>
+</section>
+
+<button id="darkToggle">Dark Mode</button>
+
+<script>
+    const toggle = document.getElementById("darkToggle");
+    toggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+        toggle.innerText = document.body.classList.contains("dark")
+            ? "Light Mode"
+            : "Dark Mode";
+    });
+</script>
 
 </body>
 </html>
