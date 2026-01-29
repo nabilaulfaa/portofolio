@@ -306,6 +306,68 @@
                 text-align: center;
             }
         }
+
+        /* ===== RESPONSIVE FOR MOBILE ===== */
+        @media (max-width: 768px) {
+            /* About section: gambar dan teks stack vertikal */
+            .about-ugc {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 30px;
+            }
+
+            /* Project grid: 1 kolom */
+            .project-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            /* Project card: sesuaikan ukuran */
+            .project-card {
+                max-width: 100%;
+                max-height: none;
+                padding: 16px;
+            }
+
+            .project-img {
+                height: 200px;
+            }
+
+            /* Experience grid: 1 kolom */
+            .exp-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            /* Contact box: stack vertikal */
+            .contact-box {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+
+        /* Untuk layar sangat kecil (<480px) */
+        @media (max-width: 480px) {
+            .about-img img {
+                width: 240px;
+                height: 300px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 35px;
+            }
+
+            .project-title {
+                font-size: 1.1rem;
+            }
+
+            .project-desc {
+                font-size: 0.9rem;
+            }
+        }
+
     </style>
 </head>
 
