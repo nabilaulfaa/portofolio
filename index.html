@@ -3,25 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <title>Nabila Ulfa | Portfolio</title>
 
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: "Poppins", sans-serif;
-            background: #0d0d0d;
-            color: white;
+        html {
             scroll-behavior: smooth;
         }
 
-        /* NAVBAR */
+        section {
+            scroll-margin-top: 100px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #0d0d0d;
+            color: #ffffff;
+            scroll-behavior: smooth;
+        }
+
+        /* ================= NAVBAR ================= */
         nav {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            padding: 20px 0;
             position: fixed;
             top: 0;
+            width: 100%;
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
             background: rgba(0, 0, 0, 0.65);
             backdrop-filter: blur(10px);
             z-index: 1000;
@@ -29,118 +43,268 @@
 
         nav a {
             color: white;
-            margin: 0 18px;
             text-decoration: none;
+            margin: 0 18px;
             font-weight: 500;
             transition: 0.3s;
         }
 
-        nav a:hover { color: #0055ff; }
+        nav a:hover {
+            color: #0055ff;
+        }
 
-        /* CONTAINER */
+        /* ================= GLOBAL ================= */
         .container {
             max-width: 1100px;
             margin: auto;
-            padding: 100px 20px 60px;
+            padding: 110px 20px 60px;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.3rem;
-            margin-bottom: 40px;
+            font-size: 2.4rem;
+            margin-bottom: 50px;
             letter-spacing: 1px;
         }
 
-        /* ABOUT */
-        .about-box {
+        /* ================= ABOUT ================= */
+        .about-img img {
+            width: 320px;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 22px;
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 0 35px rgba(0,85,255,0.4);
+        }
+       
+        .about-ugc {
             display: flex;
-            gap: 40px;
+            gap: 60px;
             align-items: center;
             flex-wrap: wrap;
         }
 
-        .profile-img {
-            width: 240px;
-            height: 240px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #0055ff;
-            box-shadow: 0 0 25px #0055ff80;
-        }
-
-        .about-text {
+        .about-content {
             flex: 1;
         }
 
-        /* PROJECTS */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+        .about-content h3 {
+            font-size: 2.1rem;
+            margin-bottom: 6px;
         }
 
+        .about-role {
+            color: #6fa0ff;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 18px;
+        }
+
+        .about-content p {
+            line-height: 1.9;
+            opacity: 0.9;
+            max-width: 620px;
+        }
+
+        /* ================= PROJECT ================= */
         .project-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
+            background: linear-gradient(145deg, rgba(0,85,255,0.18), rgba(255,255,255,0.03));
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 22px;
+            padding: 18px 20px;
+            box-shadow: 0 0 15px rgba(0,85,255,0.3);
+            transition: 0.4s ease;
             overflow: hidden;
-            transition: 0.3s;
+            cursor: pointer;
+
+            display: flex;
+            flex-direction: column;
+            max-height: 320px;
+            max-width: 360px;
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 0 25px #0055ff80;
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 0 40px #0055ff90;
             border-color: #0055ff;
+        }
+
+        .project-link {
+            color: inherit;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            height: 100%;
         }
 
         .project-img {
             width: 100%;
-            height: 180px;
+            height: 140px;
             object-fit: cover;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 0 20px rgba(0,85,255,0.4);
+            flex-shrink: 0;
         }
 
         .project-content {
-            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        .project-btn {
+        .project-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+        }
+
+        .project-desc {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
+            gap: 30px;
+            justify-content: center;
+            margin: 0 auto;
+            max-width: 1080px;
+        }
+
+        /* ================= EXPERIENCE ================= */
+        .exp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .exp-card {
+            position: relative;
+            background: linear-gradient(145deg, rgba(0,85,255,0.18), rgba(255,255,255,0.03));
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 22px;
+            padding: 28px;
+            transition: 0.4s ease;
+            overflow: hidden;
+        }
+
+        .exp-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, #0055ff60, transparent 60%);
+            opacity: 0;
+            transition: 0.4s;
+        }
+
+        .exp-card:hover::before {
+            opacity: 1;
+        }
+
+        .exp-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 0 40px #0055ff90;
+            border-color: #0055ff;
+        }
+
+        .exp-title {
+            font-size: 1.35rem;
+            margin-bottom: 6px;
+        }
+
+        .exp-role {
+            color: #6fa0ff;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .badges {
+            margin-bottom: 15px;
+        }
+
+        .badge {
             display: inline-block;
-            margin-top: 10px;
-            padding: 10px 16px;
-            background: #0055ff;
+            padding: 6px 14px;
+            margin: 4px 6px 4px 0;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            background: rgba(0,85,255,0.2);
+            border: 1px solid #0055ff;
+            color: #c5d6ff;
+        }
+
+        .exp-points {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .exp-points li {
+            margin-bottom: 10px;
+            padding-left: 22px;
+            position: relative;
+            line-height: 1.7;
+        }
+
+        .exp-points li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: #0055ff;
+        }
+
+        /* ================= CONTACT ================= */
+        .contact-box {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-top: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 24px;
+            border-radius: 50px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.15);
             color: white;
             text-decoration: none;
-            border-radius: 50px;
-            transition: 0.3s;
+            font-size: 1rem;
+            transition: 0.35s ease;
         }
 
-        .project-btn:hover {
-            background: #003bbd;
+        .contact-item i {
+            font-size: 1.3rem;
+            transition: 0.3s ease;
         }
 
-        /* EXPERIENCE */
-        .exp-list {
-            list-style: none;
-            font-size: 1.1rem;
-            line-height: 1.9;
-            padding-left: 10px;
+        .contact-item span {
+            opacity: 0.95;
         }
 
-        /* CONTACT */
-        .contact-box {
-            text-align: center;
-            margin-top: 20px;
+        .contact-item:hover {
+            transform: translateY(-6px);
+            border-color: #0055ff;
+            box-shadow: 0 0 25px #0055ff80;
         }
 
-        .contact-box a {
-            color: #0055ff;
-            font-size: 1.1rem;
-            text-decoration: none;
-        }
+        .contact-item.email:hover i { color: #ff6b6b; }
+        .contact-item.wa:hover i { color: #25D366; }
+        .contact-item.ig:hover i { color: #E1306C; }
+        .contact-item.github:hover i { color: #c9d1d9; }
 
-        /* RESPONSIVE */
         @media (max-width: 768px) {
-            .about-box { text-align: center; justify-content: center; }
+            .about-box {
+                justify-content: center;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -158,73 +322,114 @@
 <!-- ABOUT -->
 <section id="about">
     <div class="container">
-        <h2 class="section-title">About Me</h2>
-
-        <div class="about-box">
-            <img src="assets/img/profile.jpg" class="profile-img">
-
-            <div class="about-text">
-                <h3>Nabila Ulfa — Informatics Student</h3>
+        <h2 class="section-title"></h2>
+        <div class="about-ugc">
+            <div class="about-img">
+                <img src="assets/img/profile.jpg" alt="Nabila Ulfa Mauladani">
+            </div>
+            <div class="about-content">
+                <h3>Nabila Ulfa</h3>
+                <span class="about-role">Informatics Student & Web Developer</span>
                 <p>
-                    Saya seorang mahasiswi Informatika yang fokus pada web development, UI/UX,
-                    dan sistem informasi. Beberapa project saya meliputi sistem reservasi Aretha Beauty,
-                    aplikasi kasir berbasis Laravel, dan sistem rekomendasi skincare berbasis CBR.
+                Halo! Aku Nabila, seorang mahasiswi Informatika yang selalu penasaran dengan dunia teknologi.  
+                Aku senang mengubah ide menjadi aplikasi nyata, terutama yang memudahkan hidup orang lain.  
+                Berpengalaman dalam <strong>web development</strong>, <strong>UI/UX design</strong>, dan membangun sistem berbasis <strong>Laravel</strong> seperti aplikasi kasir, sistem reservasi, dan rekomendasi berbasis AI sederhana.  
+                Selain coding, aku suka eksplorasi desain yang estetik dan interaktif, karena menurutku tampilan yang rapi dan user-friendly itu penting banget!  
+                Aku selalu berusaha membuat proyek yang tidak cuma berfungsi dengan baik, tapi juga menyenangkan untuk digunakan.
                 </p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects">
-    <div class="container">
-        <h2 class="section-title">My Projects</h2>
+<!-- PROJECT -->
+<div class="project-grid">
+  <div class="project-card">
+    <a href="https://github.com/nabilaulfaa/Project-Aretha-Beauty" target="_blank" class="project-link">
+      <img src="assets/img/aretha-beauty.jpg" alt="Aretha Beauty" class="project-img" />
+      <div class="project-content">
+        <h3 class="project-title">Aretha Beauty</h3>
+        <p class="project-desc">Sistem reservasi salon berbasis Laravel.</p>
+      </div>
+    </a>
+  </div>
 
-        <div class="project-grid">
+  <div class="project-card">
+    <a href="https://github.com/nabilaulfaa/Kasir_Pintar_Project" target="_blank" class="project-link">
+      <img src="assets/img/kasir-pintar.jpg" alt="Kasir Pintar" class="project-img" />
+      <div class="project-content">
+        <h3 class="project-title">Kasir Pintar</h3>
+        <p class="project-desc">Aplikasi kasir berbasis web.</p>
+      </div>
+    </a>
+  </div>
 
-            <div class="project-card">
-                <img src="assets/img/aretha-beauty.jpg" class="project-img">
-                <div class="project-content">
-                    <h3>Aretha Beauty — Reservation System</h3>
-                    <p>Sistem reservasi salon lengkap dengan booking, membership, promo, dan dashboard admin.</p>
-                    <a class="project-btn" href="#contact">Detail Project</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <img src="assets/img/kasir-pintar.jpg" class="project-img">
-                <div class="project-content">
-                    <h3>Kasir Pintar — Laravel</h3>
-                    <p>Aplikasi kasir Laravel dengan CRUD produk, transaksi, dan laporan.</p>
-                    <a class="project-btn" href="#contact">Detail Project</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <img src="assets/img/cbr-skincare.jpg" class="project-img">
-                <div class="project-content">
-                    <h3>CBR Skincare — Streamlit</h3>
-                    <p>Sistem rekomendasi skincare menggunakan Case-Based Reasoning.</p>
-                    <a class="project-btn" href="#contact">Detail Project</a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
+  <div class="project-card">
+    <a href="https://github.com/nabilaulfaa/CBR_SKINCARE_UAS-SPK" target="_blank" class="project-link">
+      <img src="assets/img/cbr-skincare.jpg" alt="CBR Skincare" class="project-img" />
+      <div class="project-content">
+        <h3 class="project-title">CBR Skincare</h3>
+        <p class="project-desc">Sistem rekomendasi skincare.</p>
+      </div>
+    </a>
+  </div>
+</div>
 
 <!-- EXPERIENCE -->
 <section id="experience">
     <div class="container">
-        <h2 class="section-title">Experience</h2>
+        <h2 class="section-title">Project Experience</h2>
+        <div class="exp-grid">
 
-        <ul class="exp-list">
-            <li>• Admin dan pengelola data laporan Aretha Beauty</li>
-            <li>• Pengembang sistem reservasi salon (Laravel)</li>
-            <li>• Pengembang aplikasi kasir (Laravel)</li>
-            <li>• Perancang sistem rekomendasi skincare (CBR)</li>
-            <li>• UI/UX designer untuk sistem Aretha Beauty</li>
-        </ul>
+            <div class="exp-card">
+                <h3 class="exp-title">Aretha Beauty — Reservation System</h3>
+                <div class="exp-role">Fullstack Developer & UI/UX</div>
+                <div class="badges">
+                    <span class="badge">Laravel</span>
+                    <span class="badge">MySQL</span>
+                    <span class="badge">Bootstrap</span>
+                    <span class="badge">UI/UX</span>
+                </div>
+                <ul class="exp-points">
+                    <li>Sistem reservasi salon berbasis web</li>
+                    <li>Booking, membership, promo, dashboard admin</li>
+                    <li>Desain UI/UX berfokus pada user</li>
+                    <li>Proyek PBL & studi kasus UX</li>
+                </ul>
+            </div>
+
+            <div class="exp-card">
+                <h3 class="exp-title">Kasir Pintar — Laravel POS</h3>
+                <div class="exp-role">Backend Developer</div>
+                <div class="badges">
+                    <span class="badge">Laravel</span>
+                    <span class="badge">MySQL</span>
+                    <span class="badge">CRUD</span>
+                </div>
+                <ul class="exp-points">
+                    <li>Aplikasi kasir berbasis web</li>
+                    <li>Manajemen produk & transaksi</li>
+                    <li>Laporan penjualan otomatis</li>
+                    <li>Proyek mandiri semester 3</li>
+                </ul>
+            </div>
+
+            <div class="exp-card">
+                <h3 class="exp-title">CBR Skincare — Recommendation System</h3>
+                <div class="exp-role">System Designer & Developer</div>
+                <div class="badges">
+                    <span class="badge">Python</span>
+                    <span class="badge">Streamlit</span>
+                    <span class="badge">CBR</span>
+                </div>
+                <ul class="exp-points">
+                    <li>Sistem rekomendasi skincare</li>
+                    <li>Metode Case-Based Reasoning</li>
+                    <li>Proyek AI akademik</li>
+                </ul>
+            </div>
+
+        </div>
     </div>
 </section>
 
@@ -232,14 +437,26 @@
 <section id="contact">
     <div class="container">
         <h2 class="section-title">Contact Me</h2>
-
         <div class="contact-box">
-            <p>Jika ingin bekerjasama atau menanyakan project:</p>
-            <a href="mailto:nabilaulfa@gmail.com">nabilaulfa@gmail.com</a>
+            <a href="mailto:naabiilaauulfaa@gmail.com" class="contact-item email">
+                <i class="fa-solid fa-envelope"></i>
+                <span>Email</span>
+            </a>
+            <a href="https://wa.me/6281333517744" target="_blank" class="contact-item wa">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </a>
+            <a href="https://www.instagram.com/nabilaaulfaaa/" target="_blank" class="contact-item ig">
+                <i class="fa-brands fa-instagram"></i>
+                <span>Instagram</span>
+            </a>
+            <a href="https://github.com/nabilaulfaa" target="_blank" class="contact-item github">
+                <i class="fa-brands fa-github"></i>
+                <span>GitHub</span>
+            </a>
         </div>
     </div>
 </section>
 
 </body>
 </html>
-
