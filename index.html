@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,25 +7,55 @@
     <title>Nabila Ulfa | Portfolio</title>
 
     <style>
-        html {
-            scroll-behavior: smooth;
+        /* ================= THEME VARIABLES ================= */
+        :root[data-theme="dark"] {
+            --bg: #0d0d0d;
+            --bg2: rgba(0,0,0,0.65);
+            --text: #ffffff;
+            --text-muted: rgba(255,255,255,0.75);
+            --card-bg: linear-gradient(145deg, rgba(0,85,255,0.18), rgba(255,255,255,0.03));
+            --card-border: rgba(255,255,255,0.12);
+            --accent: #0055ff;
+            --accent-soft: #6fa0ff;
+            --badge-bg: rgba(0,85,255,0.2);
+            --badge-border: #0055ff;
+            --badge-text: #c5d6ff;
+            --contact-bg: rgba(255,255,255,0.06);
+            --contact-border: rgba(255,255,255,0.15);
+            --toggle-bg: rgba(255,255,255,0.1);
+            --toggle-icon: #f5c518;
+            --nav-border: rgba(255,255,255,0.08);
         }
 
-        section {
-            scroll-margin-top: 100px;
+        :root[data-theme="light"] {
+            --bg: #f0f4ff;
+            --bg2: rgba(240,244,255,0.85);
+            --text: #0d0d1a;
+            --text-muted: rgba(13,13,26,0.7);
+            --card-bg: linear-gradient(145deg, rgba(0,85,255,0.08), rgba(255,255,255,0.85));
+            --card-border: rgba(0,85,255,0.2);
+            --accent: #0044cc;
+            --accent-soft: #2255bb;
+            --badge-bg: rgba(0,85,255,0.1);
+            --badge-border: #0044cc;
+            --badge-text: #003399;
+            --contact-bg: rgba(0,85,255,0.06);
+            --contact-border: rgba(0,85,255,0.2);
+            --toggle-bg: rgba(0,0,0,0.08);
+            --toggle-icon: #444;
+            --nav-border: rgba(0,0,0,0.08);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        html { scroll-behavior: smooth; }
+        section { scroll-margin-top: 100px; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: "Poppins", sans-serif;
-            background: #0d0d0d;
-            color: #ffffff;
-            scroll-behavior: smooth;
+            background: var(--bg);
+            color: var(--text);
+            transition: background 0.35s, color 0.35s;
         }
 
         /* ================= NAVBAR ================= */
@@ -33,24 +63,66 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 20px 0;
+            padding: 18px 28px;
             display: flex;
             justify-content: center;
-            background: rgba(0, 0, 0, 0.65);
-            backdrop-filter: blur(10px);
+            align-items: center;
+            background: var(--bg2);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--nav-border);
             z-index: 1000;
+            gap: 4px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 4px;
         }
 
         nav a {
-            color: white;
+            color: var(--text);
             text-decoration: none;
-            margin: 0 18px;
+            margin: 0 14px;
             font-weight: 500;
+            font-size: 0.95rem;
             transition: 0.3s;
+            opacity: 0.85;
         }
 
         nav a:hover {
-            color: #0055ff;
+            color: var(--accent);
+            opacity: 1;
+        }
+
+        /* ===== DARK/LIGHT TOGGLE ===== */
+        .theme-toggle {
+            position: fixed;
+            top: 14px;
+            right: 22px;
+            z-index: 1100;
+            background: var(--toggle-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 50px;
+            padding: 7px 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            color: var(--text);
+            font-family: "Poppins", sans-serif;
+            transition: 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 14px color-mix(in srgb, var(--accent) 40%, transparent);
+        }
+
+        .theme-toggle i {
+            color: var(--toggle-icon);
+            font-size: 1rem;
         }
 
         /* ================= GLOBAL ================= */
@@ -73,10 +145,11 @@
             height: 420px;
             object-fit: cover;
             border-radius: 22px;
-            border: 1px solid rgba(255,255,255,0.15);
-            box-shadow: 0 0 35px rgba(0,85,255,0.4);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 0 35px color-mix(in srgb, var(--accent) 40%, transparent);
+            transition: box-shadow 0.35s;
         }
-       
+
         .about-ugc {
             display: flex;
             gap: 60px;
@@ -84,9 +157,7 @@
             flex-wrap: wrap;
         }
 
-        .about-content {
-            flex: 1;
-        }
+        .about-content { flex: 1; }
 
         .about-content h3 {
             font-size: 2.1rem;
@@ -94,7 +165,7 @@
         }
 
         .about-role {
-            color: #6fa0ff;
+            color: var(--accent-soft);
             font-weight: 500;
             display: block;
             margin-bottom: 18px;
@@ -102,21 +173,24 @@
 
         .about-content p {
             line-height: 1.9;
-            opacity: 0.9;
+            color: var(--text-muted);
             max-width: 620px;
+        }
+
+        .about-content p strong {
+            color: var(--text);
         }
 
         /* ================= PROJECT ================= */
         .project-card {
-            background: linear-gradient(145deg, rgba(0,85,255,0.18), rgba(255,255,255,0.03));
-            border: 1px solid rgba(255,255,255,0.12);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
             border-radius: 22px;
             padding: 18px 20px;
-            box-shadow: 0 0 15px rgba(0,85,255,0.3);
+            box-shadow: 0 0 15px color-mix(in srgb, var(--accent) 25%, transparent);
             transition: 0.4s ease;
             overflow: hidden;
             cursor: pointer;
-
             display: flex;
             flex-direction: column;
             max-height: 320px;
@@ -125,8 +199,8 @@
 
         .project-card:hover {
             transform: translateY(-12px) scale(1.03);
-            box-shadow: 0 0 40px #0055ff90;
-            border-color: #0055ff;
+            box-shadow: 0 0 40px color-mix(in srgb, var(--accent) 55%, transparent);
+            border-color: var(--accent);
         }
 
         .project-link {
@@ -143,8 +217,8 @@
             height: 140px;
             object-fit: cover;
             border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.15);
-            box-shadow: 0 0 20px rgba(0,85,255,0.4);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 0 20px color-mix(in srgb, var(--accent) 35%, transparent);
             flex-shrink: 0;
         }
 
@@ -163,7 +237,7 @@
 
         .project-desc {
             font-size: 0.95rem;
-            opacity: 0.9;
+            color: var(--text-muted);
             line-height: 1.4;
         }
 
@@ -185,8 +259,8 @@
 
         .exp-card {
             position: relative;
-            background: linear-gradient(145deg, rgba(0,85,255,0.18), rgba(255,255,255,0.03));
-            border: 1px solid rgba(255,255,255,0.12);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
             border-radius: 22px;
             padding: 28px;
             transition: 0.4s ease;
@@ -197,35 +271,28 @@
             content: "";
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at top right, #0055ff60, transparent 60%);
+            background: radial-gradient(circle at top right, color-mix(in srgb, var(--accent) 38%, transparent), transparent 60%);
             opacity: 0;
             transition: 0.4s;
         }
 
-        .exp-card:hover::before {
-            opacity: 1;
-        }
+        .exp-card:hover::before { opacity: 1; }
 
         .exp-card:hover {
             transform: translateY(-12px) scale(1.03);
-            box-shadow: 0 0 40px #0055ff90;
-            border-color: #0055ff;
+            box-shadow: 0 0 40px color-mix(in srgb, var(--accent) 55%, transparent);
+            border-color: var(--accent);
         }
 
-        .exp-title {
-            font-size: 1.35rem;
-            margin-bottom: 6px;
-        }
+        .exp-title { font-size: 1.35rem; margin-bottom: 6px; }
 
         .exp-role {
-            color: #6fa0ff;
+            color: var(--accent-soft);
             font-weight: 600;
             margin-bottom: 12px;
         }
 
-        .badges {
-            margin-bottom: 15px;
-        }
+        .badges { margin-bottom: 15px; }
 
         .badge {
             display: inline-block;
@@ -233,28 +300,28 @@
             margin: 4px 6px 4px 0;
             border-radius: 50px;
             font-size: 0.85rem;
-            background: rgba(0,85,255,0.2);
-            border: 1px solid #0055ff;
-            color: #c5d6ff;
+            background: var(--badge-bg);
+            border: 1px solid var(--badge-border);
+            color: var(--badge-text);
         }
 
-        .exp-points {
-            list-style: none;
-            padding-left: 0;
-        }
+        .exp-points { list-style: none; padding-left: 0; }
 
         .exp-points li {
             margin-bottom: 10px;
             padding-left: 22px;
             position: relative;
             line-height: 1.7;
+            color: var(--text-muted);
         }
+
+        .exp-points li strong { color: var(--text); }
 
         .exp-points li::before {
             content: "✦";
             position: absolute;
             left: 0;
-            color: #0055ff;
+            color: var(--accent);
         }
 
         /* ================= CONTACT ================= */
@@ -272,113 +339,70 @@
             gap: 12px;
             padding: 14px 24px;
             border-radius: 50px;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.15);
-            color: white;
+            background: var(--contact-bg);
+            border: 1px solid var(--contact-border);
+            color: var(--text);
             text-decoration: none;
             font-size: 1rem;
             transition: 0.35s ease;
         }
 
-        .contact-item i {
-            font-size: 1.3rem;
-            transition: 0.3s ease;
-        }
+        .contact-item i { font-size: 1.3rem; transition: 0.3s ease; }
 
-        .contact-item span {
-            opacity: 0.95;
-        }
+        .contact-item span { opacity: 0.95; }
 
         .contact-item:hover {
             transform: translateY(-6px);
-            border-color: #0055ff;
-            box-shadow: 0 0 25px #0055ff80;
+            border-color: var(--accent);
+            box-shadow: 0 0 25px color-mix(in srgb, var(--accent) 50%, transparent);
         }
 
         .contact-item.email:hover i { color: #ff6b6b; }
         .contact-item.wa:hover i { color: #25D366; }
         .contact-item.ig:hover i { color: #E1306C; }
-        .contact-item.github:hover i { color: #c9d1d9; }
+        .contact-item.github:hover i { color: #8b9baa; }
 
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-            .about-box {
-                justify-content: center;
-                text-align: center;
-            }
-        }
-
-        /* ===== RESPONSIVE FOR MOBILE ===== */
-        @media (max-width: 768px) {
-            /* About section: gambar dan teks stack vertikal */
             .about-ugc {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
                 gap: 30px;
             }
-
-            /* Project grid: 1 kolom */
-            .project-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            /* Project card: sesuaikan ukuran */
-            .project-card {
-                max-width: 100%;
-                max-height: none;
-                padding: 16px;
-            }
-
-            .project-img {
-                height: 200px;
-            }
-
-            /* Experience grid: 1 kolom */
-            .exp-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            /* Contact box: stack vertikal */
-            .contact-box {
-                flex-direction: column;
-                gap: 12px;
-            }
+            .project-grid { grid-template-columns: 1fr; gap: 20px; }
+            .project-card { max-width: 100%; max-height: none; padding: 16px; }
+            .project-img { height: 200px; }
+            .exp-grid { grid-template-columns: 1fr; gap: 20px; }
+            .contact-box { flex-direction: column; gap: 12px; }
+            .theme-toggle span { display: none; }
         }
 
-        /* Untuk layar sangat kecil (<480px) */
         @media (max-width: 480px) {
-            .about-img img {
-                width: 240px;
-                height: 300px;
-            }
-
-            .section-title {
-                font-size: 2rem;
-                margin-bottom: 35px;
-            }
-
-            .project-title {
-                font-size: 1.1rem;
-            }
-
-            .project-desc {
-                font-size: 0.9rem;
-            }
+            .about-img img { width: 240px; height: 300px; }
+            .section-title { font-size: 2rem; margin-bottom: 35px; }
+            .project-title { font-size: 1.1rem; }
+            .project-desc { font-size: 0.9rem; }
         }
-
     </style>
 </head>
 
 <body>
 
+<!-- THEME TOGGLE -->
+<button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+    <i class="fa-solid fa-sun" id="theme-icon"></i>
+    <span id="theme-label">Light Mode</span>
+</button>
+
 <!-- NAVBAR -->
 <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#contact">Contact</a>
+    <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+    </div>
 </nav>
 
 <!-- ABOUT -->
@@ -387,17 +411,17 @@
         <h2 class="section-title"></h2>
         <div class="about-ugc">
             <div class="about-img">
-                <img src="assets/img/profile.jpg" alt="Nabila Ulfa Mauladani">
+                <img src="assets/img/profile 1.jpg" alt="Nabila Ulfa Mauladani">
             </div>
             <div class="about-content">
                 <h3>Nabila Ulfa</h3>
                 <span class="about-role">Informatics Student & Web Developer</span>
                 <p>
-                Halo! Aku Nabila, seorang mahasiswi Informatika yang selalu penasaran dengan dunia teknologi.  
-                Aku senang mengubah ide menjadi aplikasi nyata, terutama yang memudahkan hidup orang lain.  
-                Berpengalaman dalam <strong>web development</strong>, <strong>UI/UX design</strong>, dan membangun sistem berbasis <strong>Laravel</strong> seperti aplikasi kasir, sistem reservasi, dan rekomendasi berbasis AI sederhana.  
-                Selain coding, aku suka eksplorasi desain yang estetik dan interaktif, karena menurutku tampilan yang rapi dan user-friendly itu penting banget!  
-                Aku selalu berusaha membuat proyek yang tidak cuma berfungsi dengan baik, tapi juga menyenangkan untuk digunakan.
+                    Halo! Aku Nabila, mahasiswi Informatika yang senang mengubah ide menjadi aplikasi nyata.
+                    Berpengalaman dalam <strong>web development</strong>, <strong>UI/UX design</strong>, dan membangun sistem berbasis <strong>Laravel</strong>
+                    — mulai dari aplikasi kasir, sistem reservasi, hingga kiosk digital.
+                    Aku percaya tampilan yang rapi dan <em>user-friendly</em> sama pentingnya dengan kode yang bersih.
+                    Selalu berusaha bikin proyek yang tidak cuma berfungsi baik, tapi juga menyenangkan untuk digunakan.
                 </p>
             </div>
         </div>
@@ -406,39 +430,42 @@
 
 <!-- PROJECT -->
 <section id="projects">
-<div class="container">
-<h2 class="section-title">My Projects</h2>
-<div class="project-grid">
-  <div class="project-card">
-    <a href="https://github.com/nabilaulfaa/Project-Aretha-Beauty" target="_blank" class="project-link">
-      <img src="assets/img/aretha-beauty.jpg" alt="Aretha Beauty" class="project-img" />
-      <div class="project-content">
-        <h3 class="project-title">Aretha Beauty</h3>
-        <p class="project-desc">Sistem reservasi salon berbasis Laravel.</p>
-      </div>
-    </a>
-  </div>
+    <div class="container">
+        <h2 class="section-title">My Projects</h2>
+        <div class="project-grid">
 
-  <div class="project-card">
-    <a href="https://github.com/nabilaulfaa/Kasir_Pintar_Project" target="_blank" class="project-link">
-      <img src="assets/img/kasir-pintar.jpg" alt="Kasir Pintar" class="project-img" />
-      <div class="project-content">
-        <h3 class="project-title">Kasir Pintar</h3>
-        <p class="project-desc">Aplikasi kasir berbasis web.</p>
-      </div>
-    </a>
-  </div>
+            <div class="project-card">
+                <a href="https://github.com/nabilaulfaa/Project-Aretha-Beauty" target="_blank" class="project-link">
+                    <img src="assets/img/aretha-beauty.jpg" alt="Aretha Beauty" class="project-img" />
+                    <div class="project-content">
+                        <h3 class="project-title">Aretha Beauty</h3>
+                        <p class="project-desc">Sistem reservasi salon berbasis Laravel.</p>
+                    </div>
+                </a>
+            </div>
 
-  <div class="project-card">
-    <a href="https://github.com/nabilaulfaa/CBR_SKINCARE_UAS-SPK" target="_blank" class="project-link">
-      <img src="assets/img/cbr-skincare.jpg" alt="CBR Skincare" class="project-img" />
-      <div class="project-content">
-        <h3 class="project-title">CBR Skincare</h3>
-        <p class="project-desc">Sistem rekomendasi skincare.</p>
-      </div>
-    </a>
-  </div>
-</div>
+            <div class="project-card">
+                <a href="https://github.com/nabilaulfaa/Kasir_Pintar_Project" target="_blank" class="project-link">
+                    <img src="assets/img/kasir-pintar.jpg" alt="Kasir Pintar" class="project-img" />
+                    <div class="project-content">
+                        <h3 class="project-title">Kasir Pintar</h3>
+                        <p class="project-desc">Aplikasi kasir berbasis web dengan laporan penjualan otomatis.</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="project-card">
+                <a href="https://github.com/nabilaulfaa" target="_blank" class="project-link">
+                    <img src="assets/img/kiosk-semesta.jpg" alt="Kiosk Semesta" class="project-img" />
+                    <div class="project-content">
+                        <h3 class="project-title">Kiosk Semesta</h3>
+                        <p class="project-desc">Sistem kiosk digital berbasis web.</p>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
 </section>
 
 <!-- EXPERIENCE -->
@@ -474,24 +501,24 @@
                 </div>
                 <ul class="exp-points">
                     <li>Aplikasi kasir berbasis web</li>
-                    <li>Manajemen produk & transaksi</li>
+                    <li>Manajemen produk & transaksi real-time</li>
                     <li>Laporan penjualan otomatis</li>
                     <li>Proyek mandiri semester 3</li>
                 </ul>
             </div>
 
             <div class="exp-card">
-                <h3 class="exp-title">CBR Skincare — Recommendation System</h3>
-                <div class="exp-role">System Designer & Developer</div>
+                <h3 class="exp-title">Kiosk Semesta — Digital Kiosk</h3>
+                <div class="exp-role">Fullstack Developer</div>
                 <div class="badges">
-                    <span class="badge">Python</span>
-                    <span class="badge">Streamlit</span>
-                    <span class="badge">CBR</span>
+                    <span class="badge">Laravel</span>
+                    <span class="badge">MySQL</span>
+                    <span class="badge">UI/UX</span>
                 </div>
                 <ul class="exp-points">
-                    <li>Sistem rekomendasi skincare</li>
-                    <li>Metode Case-Based Reasoning</li>
-                    <li>Proyek AI akademik</li>
+                    <li>Sistem kiosk digital berbasis web</li>
+                    <li>Antarmuka layar sentuh yang responsif</li>
+                    <li>Manajemen konten & tampilan dinamis</li>
                 </ul>
             </div>
 
@@ -523,6 +550,25 @@
         </div>
     </div>
 </section>
+
+<script>
+    function toggleTheme() {
+        const html = document.documentElement;
+        const isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        document.getElementById('theme-icon').className = isDark ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
+        document.getElementById('theme-label').textContent = isDark ? 'Dark Mode' : 'Light Mode';
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    }
+
+    // Load saved preference
+    const saved = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', saved);
+    if (saved === 'light') {
+        document.getElementById('theme-icon').className = 'fa-solid fa-moon';
+        document.getElementById('theme-label').textContent = 'Dark Mode';
+    }
+</script>
 
 </body>
 </html>
